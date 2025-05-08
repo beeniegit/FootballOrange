@@ -1,5 +1,5 @@
 import csv
-from util.players.player import player
+from app.util.players.player import player
 
 def listmaker(filename):
     persons = []
