@@ -84,7 +84,7 @@ async def get_obyb(age=30, group:str="OB", db: Session = Depends(get_db)):
         QUERY = """
                 SELECT *
                 FROM players 
-                WHERE 30 < player_age
+                    WHERE 30 < player_age
         """
         rows = tool.EXECUTE(QUERY)
         return {"YB" : rows}
@@ -102,30 +102,34 @@ async def get_search(team:str, goal:int | None = None, db: Session = Depends(get
 
     # 팀만 입력받은 경우
     if team != None & goal == None:
-        list = []
-        for pla in players:
-            if pla.팀 == team:
-                list.append(pla)
-        return {"result" : list}
+
+        QUERY = """
+                SELECT *
+                FROM players 
+                    WHERE player_team = {team}
+        """
+        rows = tool.EXECUTE(QUERY)
+        return {"result" : rows}
 
     # 골만 입력받은 경우
     if team == None & goal != None:
-        list = []
-        for pla in players:
-            if pla.골 >= goal:
-                list.append(pla)
-        return {"result" : list}
+        QUERY = """
+                SELECT *
+                FROM players 
+                    WHERE player_goal = {goal}
+        """
+        rows = tool.EXECUTE(QUERY)
+        return {"result" : rows}
 
     # 둘 다 입력받은 경우
     else:
-        list = []
-        for pla in players:
-            if pla.팀 == team:
-                list.append(pla)
-        for pla in list:
-            if pla.골 < goal:
-                list.remove(pla)
-        return {"result" : list}
+        QUERY = """
+                SELECT *
+                FROM players 
+                    WHERE player_goal = {goal} AND player_team = {team}
+        """
+        rows = tool.EXECUTE(QUERY)
+        return {"result" : rows}
 
 # 기능 구현해보기 -> 테스트(동작) -> 고치기 :: GPT 물어보기 -> 마무리 테스트
 
