@@ -41,3 +41,9 @@ class SqliteTool:
         cursor = self.connection.cursor()
         cursor.execute(QUERY)
         self.connection.commit()
+
+    def attach_db(self, db_path: str, alias: str):
+        if not self.is_connected:
+            self.connect()
+        cursor = self.connection.cursor()
+        cursor.execute(f"ATTACH DATABASE '{db_path}' AS {alias}")
