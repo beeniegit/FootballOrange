@@ -6,6 +6,8 @@ import numpy as np
 from tools.sqlite_tool import SqliteTool
 from io import StringIO
 
+##### 연습용
+
 st.write("테스트용 메세지")
 
 t = SqliteTool()

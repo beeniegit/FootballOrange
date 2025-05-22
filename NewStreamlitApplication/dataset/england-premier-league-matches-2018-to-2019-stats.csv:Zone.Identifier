@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://footystats.org/download-stats-csv
+HostUrl=https://footystats.org/c-dl.php?type=matches&comp=1625
