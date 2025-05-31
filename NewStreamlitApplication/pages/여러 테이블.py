@@ -5,8 +5,6 @@ import os
 from 도구.SQLITE_도구 import SQLITE_도구
 from 도구.STREAMLIT_도구 import *
 
-from NewStreamlitApplication.도구.STREAMLIT_도구 import DF_표기_도구
-
 t = SQLITE_도구()
 
 uploaded_file = st.file_uploader("Upload CSV file")

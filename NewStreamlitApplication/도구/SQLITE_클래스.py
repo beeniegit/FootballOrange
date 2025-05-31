@@ -1,11 +1,12 @@
 import sqlite3
-import os
 import pandas as pd
+from 도구.DATABASE_인터페이스 import DATABASE_인터페이스
+
 
 # 일반적인 Database :: Server Application
 # SQLite Database :: File
 
-class SQLITE_도구:
+class SQLITE_도구(DATABASE_인터페이스):
 
     # 생성자(인스턴스 생성)
     # 변수 정의
@@ -25,6 +26,7 @@ class SQLITE_도구:
         # 연결 시도
         self.연결_객체 = sqlite3.connect(self.경로)
         self.연결_여부 = True
+        return self.연결_객체
 
     # QUERY 로 데이터 조회
     def SELECT(self, QUERY:str):

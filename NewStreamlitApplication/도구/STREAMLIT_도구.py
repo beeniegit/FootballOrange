@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from typing import Iterable
-
-from NewStreamlitApplication.도구.SQLITE_도구 import SQLITE_도구
+from 도구.SQLITE_클래스 import SQLITE_도구
 
 t = SQLITE_도구("/root/git/project/FootballOrange/NewStreamlitApplication/도구/matches.db")
 
@@ -44,13 +43,13 @@ class 파일_업로더_도구:
 
 # 제목 작성 도구
 def 제목_작성_도구(문구:str):
-    st.write(문구)
+    return st.write(문구)
 
 # 슬라이더 도구
 def 슬라이더_도구(문구:str, 시작값:int, 끝값:int, 초기값:int):
     return st.slider(문구, 시작값, 끝값, 초기값)
 
-# DF 표기 도구
+# DF 표기 도구 (클래스로 업그레이드)
 def DF_표기_도구(데이터프레임:pd.DataFrame, 문구:str, 편집기능:bool):
     if 편집기능:
         if st.toggle(문구):
@@ -77,4 +76,15 @@ def 평가용_도구(방법:str):
 
 def 골라봐_도구(문구:str, 선택:Iterable[str]):
     return st.selectbox(문구, 선택)
+
+def 수치_표시(이름:str, 값:int, 변화:int, 색:str):
+    return st.metric(이름, 값, 변화, 색)
+
+def 멀티_선택_도구(문구:str, 선택지:Iterable[str], 기본값:None):
+    options = st.multiselect(
+        문구,
+        선택지,
+        기본값,
+    )
+    return st.write("You selected:", options)
 
