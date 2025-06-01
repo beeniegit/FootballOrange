@@ -6,10 +6,10 @@ from 도구.SQLITE_클래스 import SQLITE_도구
 from 도구.STREAMLIT_도구 import *
 
 # 페이지 제목
-st.write("채팅 기능")
+st.write("나가")
 
 # 주석
-st.caption("데모임 꼬우면 나가")
+st.caption("나가셈")
 
 # 로그인
 if "username" not in st.session_state:
