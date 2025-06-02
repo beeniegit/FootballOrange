@@ -19,7 +19,7 @@ class 파일_업로더_도구:
             self.파일명 = None
 
     # 데이터프레임 객체 생성 기능
-    def 데이터프레임_생성(self):
+    def 데이터프레임_생성(self) -> pd.DataFrame:
         if self.파일:
             try:
                 self.데이터프레임 = pd.read_csv(self.파일)
